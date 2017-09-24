@@ -35,8 +35,8 @@
             this.DGVCD = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.DGVCDTrack = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtTrackDuration = new System.Windows.Forms.TextBox();
+            this.txtTrackName = new System.Windows.Forms.TextBox();
             this.txtCDName = new System.Windows.Forms.TextBox();
             this.txtCDArtist = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,9 +49,9 @@
             this.txtCDName2 = new System.Windows.Forms.Label();
             this.grdgrd = new System.Windows.Forms.Label();
             this.txtTrackID = new System.Windows.Forms.TextBox();
-            this.txtTrackDuration = new System.Windows.Forms.Label();
+            this.mhh = new System.Windows.Forms.Label();
             this.txtTrackID1 = new System.Windows.Forms.Label();
-            this.txtTrackName = new System.Windows.Forms.Label();
+            this.juytjrtf = new System.Windows.Forms.Label();
             this.txtOwnerID = new System.Windows.Forms.TextBox();
             this.txtCDID = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -122,6 +122,7 @@
             this.DGVCD.Name = "DGVCD";
             this.DGVCD.Size = new System.Drawing.Size(501, 175);
             this.DGVCD.TabIndex = 1;
+            this.DGVCD.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVCD_CellContentClick);
             // 
             // tabPage3
             // 
@@ -131,7 +132,7 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(507, 181);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.Text = "Tracks";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // DGVCDTrack
@@ -142,20 +143,21 @@
             this.DGVCDTrack.Name = "DGVCDTrack";
             this.DGVCDTrack.Size = new System.Drawing.Size(501, 175);
             this.DGVCDTrack.TabIndex = 2;
+            this.DGVCDTrack.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVCDTrack_CellContentClick);
             // 
-            // textBox1
+            // txtTrackDuration
             // 
-            this.textBox1.Location = new System.Drawing.Point(261, 359);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtTrackDuration.Location = new System.Drawing.Point(261, 359);
+            this.txtTrackDuration.Name = "txtTrackDuration";
+            this.txtTrackDuration.Size = new System.Drawing.Size(100, 20);
+            this.txtTrackDuration.TabIndex = 2;
             // 
-            // textBox2
+            // txtTrackName
             // 
-            this.textBox2.Location = new System.Drawing.Point(16, 359);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(223, 20);
-            this.textBox2.TabIndex = 3;
+            this.txtTrackName.Location = new System.Drawing.Point(16, 359);
+            this.txtTrackName.Name = "txtTrackName";
+            this.txtTrackName.Size = new System.Drawing.Size(223, 20);
+            this.txtTrackName.TabIndex = 3;
             // 
             // txtCDName
             // 
@@ -254,14 +256,14 @@
             this.txtTrackID.Size = new System.Drawing.Size(100, 20);
             this.txtTrackID.TabIndex = 21;
             // 
-            // txtTrackDuration
+            // mhh
             // 
-            this.txtTrackDuration.AutoSize = true;
-            this.txtTrackDuration.Location = new System.Drawing.Point(258, 343);
-            this.txtTrackDuration.Name = "txtTrackDuration";
-            this.txtTrackDuration.Size = new System.Drawing.Size(78, 13);
-            this.txtTrackDuration.TabIndex = 22;
-            this.txtTrackDuration.Text = "Track Duration";
+            this.mhh.AutoSize = true;
+            this.mhh.Location = new System.Drawing.Point(258, 343);
+            this.mhh.Name = "mhh";
+            this.mhh.Size = new System.Drawing.Size(78, 13);
+            this.mhh.TabIndex = 22;
+            this.mhh.Text = "Track Duration";
             // 
             // txtTrackID1
             // 
@@ -272,14 +274,14 @@
             this.txtTrackID1.TabIndex = 23;
             this.txtTrackID1.Text = "TrackID";
             // 
-            // txtTrackName
+            // juytjrtf
             // 
-            this.txtTrackName.AutoSize = true;
-            this.txtTrackName.Location = new System.Drawing.Point(16, 343);
-            this.txtTrackName.Name = "txtTrackName";
-            this.txtTrackName.Size = new System.Drawing.Size(66, 13);
-            this.txtTrackName.TabIndex = 24;
-            this.txtTrackName.Text = "Track Name";
+            this.juytjrtf.AutoSize = true;
+            this.juytjrtf.Location = new System.Drawing.Point(16, 343);
+            this.juytjrtf.Name = "juytjrtf";
+            this.juytjrtf.Size = new System.Drawing.Size(66, 13);
+            this.juytjrtf.TabIndex = 24;
+            this.juytjrtf.Text = "Track Name";
             // 
             // txtOwnerID
             // 
@@ -323,7 +325,6 @@
             this.button2.TabIndex = 30;
             this.button2.Text = "Delete Track";
             this.button2.UseVisualStyleBackColor = true;
-            //this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -373,9 +374,9 @@
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.txtCDID);
             this.Controls.Add(this.txtOwnerID);
-            this.Controls.Add(this.txtTrackName);
+            this.Controls.Add(this.juytjrtf);
             this.Controls.Add(this.txtTrackID1);
-            this.Controls.Add(this.txtTrackDuration);
+            this.Controls.Add(this.mhh);
             this.Controls.Add(this.txtTrackID);
             this.Controls.Add(this.grdgrd);
             this.Controls.Add(this.txtCDName2);
@@ -388,8 +389,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCDArtist);
             this.Controls.Add(this.txtCDName);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtTrackName);
+            this.Controls.Add(this.txtTrackDuration);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -412,8 +413,8 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView DGVOwner;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtTrackDuration;
+        private System.Windows.Forms.TextBox txtTrackName;
         private System.Windows.Forms.TextBox txtCDName;
         private System.Windows.Forms.TextBox txtCDArtist;
         private System.Windows.Forms.Label label1;
@@ -429,9 +430,9 @@
         private System.Windows.Forms.Label txtCDName2;
         private System.Windows.Forms.Label grdgrd;
         private System.Windows.Forms.TextBox txtTrackID;
-        private System.Windows.Forms.Label txtTrackDuration;
+        private System.Windows.Forms.Label mhh;
         private System.Windows.Forms.Label txtTrackID1;
-        private System.Windows.Forms.Label txtTrackName;
+        private System.Windows.Forms.Label juytjrtf;
         private System.Windows.Forms.TextBox txtOwnerID;
         private System.Windows.Forms.TextBox txtCDID;
         private System.Windows.Forms.TextBox textBox5;

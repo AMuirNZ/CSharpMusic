@@ -26,10 +26,10 @@ namespace CSharpMusic
         {
             //load the owner dgv
             DisplayDataGridViewOwner();
-          
+
             //just to load the listbox with the grenres in it
             DisplayListBox();
-            
+
 
         }
 
@@ -57,7 +57,7 @@ namespace CSharpMusic
             try
             {
                 DGVCD.DataSource = myDatabase.FillDGVCDWithCD();
-                //pass the datatable data to the DataGridView
+             //pass the datatable data to the DataGridView
                 DGVCD.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)
@@ -97,7 +97,7 @@ namespace CSharpMusic
             //these are the cell clicks for the values in the row that you click on
             try
             {
-                OwnerID = (int)DGVOwner.Rows[e.RowIndex].Cells[0].Value;
+                OwnerID = (int) DGVOwner.Rows[e.RowIndex].Cells[0].Value;
                 txtFN.Text = DGVOwner.Rows[e.RowIndex].Cells[1].Value.ToString();
                 txtLN.Text = DGVOwner.Rows[e.RowIndex].Cells[2].Value.ToString();
 
@@ -123,7 +123,7 @@ namespace CSharpMusic
             //these are the cell clicks for the values in the row that you click on
             try
             {
-                CDID = (int)DGVCD.Rows[e.RowIndex].Cells[0].Value;
+                CDID = (int) DGVCD.Rows[e.RowIndex].Cells[0].Value;
                 txtCDName.Text = DGVCD.Rows[e.RowIndex].Cells[1].Value.ToString();
                 txtCDArtist.Text = DGVCD.Rows[e.RowIndex].Cells[2].Value.ToString();
                 txtCDGenre.Text = DGVCD.Rows[e.RowIndex].Cells[3].Value.ToString();
@@ -143,7 +143,7 @@ namespace CSharpMusic
             }
         }
 
-        
+
 
         private void btnClear_Click_1(object sender, EventArgs e)
         {
@@ -152,45 +152,29 @@ namespace CSharpMusic
             this.Dispose(false);
         }
 
-        private void btnDelete_Click(System.Object sender, System.EventArgs e)
+        private void DGVCDTrack_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string InputID = string.Empty;
-            //hold the ID of the owner, CD, or Track
-            string result = null;
-            Button fakebutton = null;
-            fakebutton = (Button)sender;
-            try
+            int CDTrackID = 0;
+            //these are the cell clicks for the values in the row that you click on
+
+            CDTrackID = (int) DGVCDTrack.Rows[e.RowIndex].Cells[0].Value;
+            txtTrackName.Text = DGVCDTrack.Rows[e.RowIndex].Cells[1].Value.ToString();
+            txtTrackDuration.Text = DGVCDTrack.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+            //if you are cicking on a row and not outside it
+            if (e.RowIndex >= 0)
             {
-                switch (fakebutton.Name)
-                {
-                    case "btnDeleteOwner":
-                        InputID = txtOwnerID.Text;
-                        break;
+                //Fill the next CD DGV with the owner ID
+                
+                txtTrackID.Text = CDTrackID.ToString();
 
-                    case "btnDeleteCD":
-                        InputID = txtCDID.Text;
-                        break;
-                    case "btnDeleteTracks":
-                        InputID = txtTrackID.Text;
-                        break;
-                }
-                //delete the track here and return back success or failure
-                result = myDatabase.DeleteOwnerCDTracks(InputID, fakebutton.Tag.ToString());
-                MessageBox.Show(fakebutton.Tag + " delete " + result);
-
-                //refresh everything
-                DisplayDataGridViewOwner();
-                DGVCD.DataSource = myDatabase.AllFillDGVWithData("CD", txtCDID.Text);
-                DGVtracks.DataSource = myDatabase.AllFillDGVWithData("Track", txtTrackID.Text);
-
-                //filClearAllTextBoxes(this); //clear all the textboxes afterwards
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("First click on the Owner, CD, or Track you want to delete " + ex.Message);
-            }
-        }
+        
+
+
+}
     }
 }
+
     
 
